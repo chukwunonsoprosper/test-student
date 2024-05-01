@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build</title>
+</head>
+
+<body>
+    <div class="container">
+        <input type="file" id="file" accept="image/*" style="display: none;">
+        <div class="image">
+            <img src="" alt="" id="img" style="display: none;">
+        </div>
+
+        <label for="file">
+            <p>browse</p>
+        </label>
+
+    </div>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+            background-color: hsl(0, 0%, 93%);
+            position: absolute;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        label p {
+            padding: 10px 10px;
+            background-color: dodgerblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: -2px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            left: 12px;
+
+        }
+
+        .image {
+            width: 70%;
+            top: 30px;
+            height: 80%;
+            position: relative;
+        }
+
+        .image #img {
+           position: absolute;
+           display: block;
+           width: 100%;
+           height: auto;
+           background-color: antiquewhite;
+        }
+    </style>
+
+    <script>
+        let imageSelector = document.getElementById('file');
+        let imageContainer = document.getElementById('img');
+
+        imageSelector.addEventListener('change', () => {
+            if (imageContainer.style.display == 'none') {
+                imageContainer.style.display = 'block';
+                imageContainer.src = URL.createObjectURL(imageSelector.files[0])
+            }
+        })
+
+    </script>
+</body>
+
+</html>
